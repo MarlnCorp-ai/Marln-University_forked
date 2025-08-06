@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-const isAmplify = process.env.AMPLIFY_ENV !== undefined;
+// Detect if running in Amplify
+const isAmplify = process.env.AMPLIFY_ENV !== undefined
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: isAmplify ? '/' : process.env.NODE_ENV === 'production' ? '/Marln-University/' : '/',
+  base: isAmplify || process.env.NODE_ENV === 'production' ? '/' : '/',
   plugins: [react()],
 })
